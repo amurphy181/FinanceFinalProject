@@ -2,6 +2,12 @@
 
 Joseph DiBiasi, Wilson Lou, Alex Murphy
 
+### AWS Link and Login Info
+Link: http://18.216.126.90:8080/FinanceREST/
+Login Info:
+Username: user 
+Password: password
+
 ### Application Purpose
 
 We started this project with the goal of allowing users to input, track, and quantify their income and expenses over time. These expenditures are further able to be compared to a budgeting system, which can be adjusted on a month-to-month basis in order to better organize spending.

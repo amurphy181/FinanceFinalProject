@@ -4,8 +4,11 @@ Joseph DiBiasi, Wilson Lou, Alex Murphy
 
 ### AWS Link and Login Info
 Link: http://18.216.126.90:8080/FinanceREST/
+
 Login Info:
+
 Username: user 
+
 Password: password
 
 ### Application Purpose

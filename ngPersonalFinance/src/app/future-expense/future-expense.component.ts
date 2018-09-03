@@ -63,8 +63,6 @@ export class FutureExpenseComponent implements OnInit {
   }
 
   updateExpense(form, editExpense) {
-    console.log('update future expense log: ' + editExpense);
-    console.log(editExpense);
     if (form.value.recurring === true) {
       editExpense.recurring = true;
     } else {

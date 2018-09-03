@@ -86,6 +86,7 @@ export class AccountComponent implements OnInit {
       data => {
         this.resetUser();
         this.selected = data;
+        this.authService.generateBasicAuthToken(this.selected.username, this.selected.password);
       },
       err => console.error('Post error' + err)
     );

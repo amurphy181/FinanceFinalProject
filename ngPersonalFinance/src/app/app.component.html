@@ -32,8 +32,7 @@
         categoryPieChart:null, user:null, home:null, chart:null, login: null, account:['account']}}]"><button mat-raised-button color="primary"><i class="far fa-user-circle"></i>&nbsp;&nbsp;Account</button></a><br><br></div>
      <div *ngIf= "!checkLoggedIn()"><a [routerLink]="[{outlets:{formInput:null, account: null, logout: null, frontPage:null,  allDataTable:null,
         categoryPieChart:null, user:null, home:null, chart:null, login:['login']}}]"><button mat-raised-button color="primary"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login</button></a><br><br></div>
-     <div *ngIf="checkLoggedIn()"> <a [routerLink]="[{outlets:{formInput:null, account: null, frontPage:null,  allDataTable:null,
-        categoryPieChart:null, user:null, home:null, chart:null, login: null, logout:['logout']}}]"><button mat-raised-button color="primary" (click) = logout() ><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button></a></div>
+     <div *ngIf="checkLoggedIn()"> <a><button mat-raised-button color="primary" (click) = logout() ><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button></a></div>
     </mat-sidenav>
     <body>&nbsp;
 

@@ -205,6 +205,7 @@ export class HomeComponent implements OnInit {
     this.exServ.getExpenseBetweenDates(this.dateObject).subscribe(
       data => {
         this.allExpenses = data;
+        this.lastMonthExpenses = 0;
         for (let i = 0; i < this.allExpenses.length; i++) {
           this.lastMonthExpenses += this.allExpenses[i].amount;
         }
@@ -213,6 +214,8 @@ export class HomeComponent implements OnInit {
         this.inServ.getIncomeBetweenDates(this.dateObject).subscribe(
           data2 => {
             this.allIncome = data2;
+            this.lastMonthIncome = 0;
+
             for (let i = 0; i < this.allIncome.length; i++) {
               this.lastMonthIncome += this.allIncome[i].amount;
             }

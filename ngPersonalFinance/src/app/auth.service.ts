@@ -25,11 +25,12 @@ export class AuthService {
     console.log(token);
     // Send token as Authorization header (this is spring security convention for basic auth)
     const headers = new HttpHeaders()
-      .set('Authorization', `Basic ${token}`);
+    .set('Authorization', `Basic ${token}`)
+    .set('X-Requested-With', 'XMLHttpRequest');
 
     // create request to authenticate credentials
     return this.http
-      .get(this.url + 'api/login', {headers})
+      .get(this.url + 'api/authenticate', {headers})
       .pipe(
         tap((res) => {
           localStorage.setItem('token' , token);

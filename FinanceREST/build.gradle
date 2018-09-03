@@ -10,6 +10,12 @@
     }
 }
 
+plugins {
+  id 'org.hidetake.ssh' version '2.9.0'
+}
+
+apply plugin: 'org.hidetake.ssh'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -22,7 +28,7 @@ war {
   destinationDir = file("./WAR")      // WAR folder under project root directory
 }
 
-group = 'com.skilldistillery.todoapp'
+group = 'com.skilldistillery.finance'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -57,4 +63,29 @@ testRuntime('org.junit.jupiter:junit-jupiter-engine:5.0.1',
          compile('org.springframework.boot:spring-boot-starter-security')
       
 }
+remotes {
+  ec2host {
+    host = '18.216.126.90' // Change this to you EC2 host's public IP
+    user = 'ec2-user'
+    identity = file("${System.properties['user.home']}/.ssh/aws.pem")
+  }
+}
+
+task deploy(dependsOn: war, group: 'build') {
+  description = 'Deploy WAR file to remote server'
+  ssh.settings {
+    knownHosts = addHostKey(file("${System.properties['user.home']}/.ssh/known_hosts"))
+  }  
+  doLast {
+    logger.lifecycle("Deploying $war.archivePath to $remotes.ec2host.host")
+    ssh.run {
+      session(remotes.ec2host) {
+        put from: war.archivePath.absolutePath, into: '/var/lib/tomcat8/webapps'
+        logger.lifecycle("WAR file deployed to $remotes.ec2host.host")
+      }
+    }
+  }
+}
+
+
 

@@ -1198,7 +1198,7 @@ export class AllDataTableComponent implements OnInit {
         );
       }
       },
-      err => console.log(err)
+      err => console.  log(err)
     );
   }
 
